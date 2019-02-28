@@ -31,7 +31,7 @@ async def _(session: CommandSession):
 
 
 # 将大家的分享定时发送到群中
-@scheduler.scheduled_job('interval', days=7, start_date='2019-03-04 19:59:01')
+@scheduler.scheduled_job('interval', seconds=10, start_date='2019-02-04 19:59:01')
 async def _():
 
     # 删除空字符串
@@ -58,7 +58,7 @@ async def _():
 
         # 组织语言 要发送的分享信息 发送的消息还不知道如何换行 正在想办法
         for i, item in enumerate(real_data):
-            what_send = what_send + str(i+1) + '. ' + item + ' '*20
+            what_send = what_send + str(i+1) + '. ' + item
 
         try:
             groups_file = open('awesome/plugins/home_share/data/config.json', 'r')

@@ -24,7 +24,7 @@ async def get_share_data(share_data: str, sender_data) -> str:
     card = eval(datas.text.replace('true','True').replace('false','False'))['data']['card']
     mon_time = get_next_monday()
     file = open('awesome/plugins/home_share/data/{}.txt'.format(str(mon_time)), 'a+')
-    file.write(share_data + '@' + card + 'buhuizhemeqiaoba') # 不会这么巧吧 用于间隔不同的消息
+    file.write(share_data + '@' + card + '\r\n'+'buhuizhemeqiaoba') # 不会这么巧吧 用于间隔不同的消息
     file.close()
     # print(open('awesome/plugins/home_share/data/{}.txt'.format(str(mon_time)), 'r').readlines())
     # 这里简单返回一个字符串
