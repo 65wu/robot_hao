@@ -1,20 +1,48 @@
-import requests,lxml,random
+import requests,lxml,random,re
 from bs4 import BeautifulSoup
 
 async def trash(trash_name, data):
-    trash_name = trash_name.replace("是什么垃圾","").replace("是什么垃圾","").replace("?","").replace("？","")
-    print(data)
-    if trash_name in ["你","浩浩","你们"]:
+    trash_name = trash_name.replace("是什么垃圾","").replace("是什么垃圾","").replace("?","").replace("？","").replace(' ','')
+
+
+    trash_name = re.sub(u"([^\u4e00-\u9fa5\u0030-\u0039\u0041-\u005a\u0061-\u007a])","",trash_name)
+    str_name = re.sub('[a-zA-Z0-9’!"#$%&\'()*+,-./:;<=>?@，。?★、…【】《》？“”‘’！[\\]^_`{|}~\s]+', "", trash_name)
+    if str_name == '':
+        unknow_answer = [
+            '我现在还不太明白这种垃圾呢！',
+            '我有点看不懂你的意思呀，可以跟我聊些简单的话题嘛',
+            '其实我不太明白你的意思……',
+            '抱歉哦，我现在的能力还不能够明白你在说什么，但我会加油的～'
+        ]
+        return random.choice(unknow_answer)
+    # print(data)
+    if trash_name in ["你","浩浩","你们","那你"]:
         inter_answer = [
             '我这么聪明，怎么会是垃圾呢？',
             '我这么机智，要说是也是高智商垃圾吧'
         ]
         return random.choice(inter_answer)
-    if trash_name in ["我","我们"]:
+    if trash_name in ["我","我们","那我","楼上"]:
         inter_answer = [
             '你这么聪明，怎么会是垃圾呢？',
             '你看起来不像来自地球，不会是太空垃圾吧？',
             '你这么机智，要说是也是高智商垃圾吧'
+        ]
+        return random.choice(inter_answer)
+
+    if trash_name in ["群主","楼上","欣芝"]:
+        inter_answer = [
+            '{}这么聪明，怎么会是垃圾呢？'.format(trash_name),
+            '{}看起来不像来自地球，不会是太空垃圾吧？'.format(trash_name),
+            '{}这么机智，要说是也是高智商垃圾吧'.format(trash_name)
+        ]
+        return random.choice(inter_answer)
+
+    if trash_name in ["老汪头","郑宇杰"]:
+        inter_answer = [
+            '{}这么笨，被归属于垃圾，垃圾家族应该不会满意吧！！'.format(trash_name),
+            '{}看起来不像来自地球，不会是太空垃圾吧？'.format(trash_name),
+            '{}这么搞笑，或许是娱乐垃圾吧'.format(trash_name)
         ]
         return random.choice(inter_answer)
 
@@ -41,7 +69,7 @@ async def trash(trash_name, data):
             other_name = ''
         else:
             print(other_name)
-            other_name = '或许你想问的是'+ '、'.join(other_name) + '?'
+            other_name = '或许你想问的是'+ '、'.join(list(set(other_name))) + '?'
         return random.choice(random_sentence) + other_name
 # print(res)
 

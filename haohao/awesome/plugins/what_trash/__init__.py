@@ -1,10 +1,28 @@
 import pytz, os
-from .trash import trash
+
 from nonebot import on_command, CommandSession, get_bot, scheduler
 from datetime import datetime
 from aiocqhttp.exceptions import Error as CQHttpError
+from aiocqhttp import CQHttp
+
+from .trash_sort import trash
 
 
+def trash_sorter(msg: str) -> str:
+    return trash(msg,0)
+
+# @on_message()
+@on_command('what_trash',aliases=("ll"))
+async def handle_msg(context):
+    print(context)
+    msg = context['message']
+    if (len(msg) > 5) and ('什么垃圾' in msg[1:]):
+        us_data = await trash(share_data,session.ctx)
+        await session.send(us_data)
+        # await bot.send(context, context['message'])
+    else:
+        pass
+    # await bot.send(context, context['message'])
 
 
 @on_command('what_trash',aliases=("垃圾分类",'lj', 'ljfl'))
