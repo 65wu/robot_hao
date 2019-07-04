@@ -18,7 +18,9 @@ EXPR_DONT_UNDERSTAND = (
     '抱歉哦，我现在的能力还不能够明白你在说什么，但我会加油的～'
 )
 
-keys_list = ["780ac68dd9ca4ba58374b0f3db1a9b18","6a26db99154248809f0b3b750d5098c6","b6aab09b04ef41898b85f60e18b69940"]
+keys_list = ["780ac68dd9ca4ba58374b0f3db1a9b18","6a26db99154248809f0b3b750d5098c6",
+             "b6aab09b04ef41898b85f60e18b69940", "6d73e92a7e594687ad8f268b4cb3d2f4",
+             "ae7caaf2308a40179476062a857615e4"]
 # 注册一个仅内部使用的命令，不需要 aliases
 @on_command('tuling')
 async def tuling(session: CommandSession):
@@ -87,7 +89,7 @@ async def call_tuling_api(session: CommandSession, text: str) -> Optional[str]:
         },
         'userInfo': {
             # 'apiKey': session.bot.config.TULING_API_KEY,
-            'apiKey': random.choice(keys_list),
+            'apiKey': random.choice(keys_list[-2:]),
             'userId': context_id(session.ctx, use_hash=True)
         }
     }

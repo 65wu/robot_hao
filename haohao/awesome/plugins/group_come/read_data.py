@@ -9,17 +9,20 @@ group_data = my_data["data"]
 
 
 
-def write_data(group_id: str, user_id: str, time: int) -> None:
+def write_data(group_id: str, user_id: str, come_time: int) -> None:
     file_name = 'awesome/plugins/group_come/data/' + group_id + '.txt'
 
     if os.path.isfile(file_name):
         f0 = open(file_name,'r')
         if f0.read() == '':
-            now_data = []
+            now_data = {
+                "qq_list":[],
+                "last_time": int(time.time())
+            }
         else:
             now_data = eval(f0.read())
         now_data["qq_list"].append(user_id)
-        now_data["last_time"] = time
+        now_data["last_time"] = come_time
         f0.close()
         f1 = open(file_name, 'w')
         f1.write(str(now_data))
@@ -27,7 +30,7 @@ def write_data(group_id: str, user_id: str, time: int) -> None:
     else:
         now_data = {
             "qq_list":[user_id],
-            "last_time": time
+            "last_time": come_time
         }
         f = open(file_name, 'w')
         f.write(str(now_data))
