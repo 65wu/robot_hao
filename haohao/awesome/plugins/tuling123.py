@@ -89,7 +89,7 @@ async def call_tuling_api(session: CommandSession, text: str) -> Optional[str]:
         },
         'userInfo': {
             # 'apiKey': session.bot.config.TULING_API_KEY,
-            'apiKey': random.choice(keys_list[-2:]),
+            'apiKey': random.choice(keys_list),
             'userId': context_id(session.ctx, use_hash=True)
         }
     }
