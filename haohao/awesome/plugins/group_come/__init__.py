@@ -84,7 +84,7 @@ async def _(session: NoticeSession):
 
     if (my_data0['notice_type'] == 'group_increase') and (group_id in group_list):
         user_id = str(my_data0['user_id'])
-        now_time = str(my_data0['time'])
+        now_time = str(my_data0['now_time'])
         print("------------")
         write_data(group_id,user_id,int(now_time))
         print("------------")
