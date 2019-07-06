@@ -1,6 +1,14 @@
 import requests,lxml,random,re
 from bs4 import BeautifulSoup
 
+unknow_answer = [
+    '我现在还不太明白这种垃圾呢！',
+    '我有点看不懂你的意思呀，或许你可以问问小家园？',
+    '其实我不太明白你的意思……',
+    '抱歉哦，我现在的能力还不能够明白你在说什么垃圾，但我会加油的～'
+]
+
+
 async def trash(trash_name, data):
         if not trash_name:
         return random.choice(unknow_answer)
