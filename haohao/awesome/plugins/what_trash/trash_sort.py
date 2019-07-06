@@ -10,7 +10,7 @@ unknow_answer = [
 
 
 async def trash(trash_name, data):
-        if not trash_name:
+    if not trash_name:
         return random.choice(unknow_answer)
 
     trash_name1 = trash_name.replace("是什么垃圾", "").replace("是什么垃圾", "").replace("?", "").replace("？", "").replace(' ', '')
