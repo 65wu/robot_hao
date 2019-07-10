@@ -67,7 +67,7 @@ async def trash(trash_name, data):
         soup = BeautifulSoup(res, 'lxml')
         trash_is = soup.select('#form1 > div.main > div.con > div.info > p > span')[0].get_text()
         ans = '{}属于{}{}'.format(trash_name, str(trash_is),random.choice(['哦~','呢！','的啦！','哟~']))
-        ans_data_f = open("awesome/plugins/home_share/ansdata/answer_data.txt","a")
+        ans_data_f = open("awesome/plugins/what_trash/ansdata/answer_data.txt","a")
         ans_data = {trash_name2: trash_is}
         ans_data_f.write(str(ans_data))
         return ans

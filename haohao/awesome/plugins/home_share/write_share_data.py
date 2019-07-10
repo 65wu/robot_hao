@@ -7,7 +7,7 @@ def get_next_monday():
     today = datetime.date.today()
     oneday = datetime.timedelta(days = 1)
     m1 = calendar.MONDAY
-    if (today.weekday() == m1) and (time.strftime('%H',time.localtime())<=20):
+    if (today.weekday() == m1) and (int(time.strftime('%H',time.localtime())) <= 20):
         return today.strftime('%Y%m%d')
     else:
         today += oneday

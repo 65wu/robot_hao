@@ -20,7 +20,9 @@ EXPR_DONT_UNDERSTAND = (
 
 keys_list = ["780ac68dd9ca4ba58374b0f3db1a9b18","6a26db99154248809f0b3b750d5098c6",
              "b6aab09b04ef41898b85f60e18b69940", "6d73e92a7e594687ad8f268b4cb3d2f4",
-             "ae7caaf2308a40179476062a857615e4"]
+             "ae7caaf2308a40179476062a857615e4","8b5f30f5caed4196a21ab0887eef1858",
+             "b424b32b20d9433eb4109c1b07d51bcc","e2c43a8914eb4c98b35dda132cad5244",
+             "aba3823f0b8945cc9edaff7df1219bf5","cd19cd742df240e287caa0e366472c89"]
 # 注册一个仅内部使用的命令，不需要 aliases
 @on_command('tuling')
 async def tuling(session: CommandSession):
@@ -48,7 +50,7 @@ async def _(session: NLPSession):
     # 以置信度 60.0 返回 tuling 命令
     # 确保任何消息都在且仅在其它自然语言处理器无法理解的时候使用 tuling 命令
     # print(session.ctx['message'])# 消息内容
-    print(session.ctx)
+    # print(session.ctx)# 有些人会报错 unicode Encode Error
     msg = str(session.ctx['message'])
     msg_type = str(session.ctx['message_type'])
     to_me = str(session.ctx['to_me'])
